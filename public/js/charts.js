@@ -1,16 +1,13 @@
-
-
-
-function PlotAll(json,page) {
-    plotTable(json,page);
-    PlotChart(json,page);
+function PlotAll(json, page) {
+    plotTable(json, page);
+    PlotChart(json, page);
 }
 
-var PlotChart = (data,page) => {
+var PlotChart = (data, page) => {
     var cc = document.getElementById('chart-container');
     cc.innerHTML = "<canvas id='myChart'></canvas>"
 
-    var p = page-1;
+    var p = page - 1;
     var dateArray = [];
     var openArray = [];
     var closeArray = [];
@@ -18,19 +15,19 @@ var PlotChart = (data,page) => {
     var lowArray = [];
 
     for (var i = 0; i < 10; i++) {
-        dateArray[i] = data.priceHistory[i+(p*10)][0]
+        dateArray[i] = data.priceHistory[i + (p * 10)][0]
     }
     for (var i = 0; i < 10; i++) {
-        openArray[i] = data.priceHistory[i+(p*10)][1]
+        openArray[i] = data.priceHistory[i + (p * 10)][1]
     }
     for (var i = 0; i < 10; i++) {
-        highArray[i] = data.priceHistory[i+(p*10)][2]
+        highArray[i] = data.priceHistory[i + (p * 10)][2]
     }
     for (var i = 0; i < 10; i++) {
-        lowArray[i] = data.priceHistory[i+(p*10)][3]
+        lowArray[i] = data.priceHistory[i + (p * 10)][3]
     }
     for (var i = 0; i < 10; i++) {
-        closeArray[i] = data.priceHistory[i+(p*10)][4]
+        closeArray[i] = data.priceHistory[i + (p * 10)][4]
     }
 
 
@@ -102,9 +99,9 @@ var PlotChart = (data,page) => {
 };
 
 //table plot function
-function plotTable(data,page) {
+function plotTable(data, page) {
 
-    var p = page-1;
+    var p = page - 1;
 
     const table = document.getElementById('table');
 
@@ -120,7 +117,7 @@ function plotTable(data,page) {
 
     for (var i = 0; i < 10; i++) {
         for (var j = 0; j < 6; j++) {
-            tRow += "<td>" + tBody[i+(p*10)][j] + "</td>";
+            tRow += "<td>" + tBody[i + (p * 10)][j] + "</td>";
         }
         console.log(tRow);
         tableBodyData += "<tr>" + tRow + "</tr>";
@@ -133,10 +130,19 @@ function plotTable(data,page) {
     const pages = document.getElementById('pages');
     var pgMarkup = "";
     var nop = Math.ceil(tBody.length);
-    for (var i = 0; i < nop; i++) {
-        pgMarkup += "<li class='waves-effect'><a onclick='PlotAll(json,"+(i+1)+")'>"+(i+1)+"</a></li>";
+    for (var i = 0 + p; i < p + 7 && i < nop; i++) {
+        if (i == 0 + p) {
+            pgMarkup += "<li class='active'><a onclick='PlotAll(json," + (i + 1) + ")'>" + (i + 1) + "</a></li>";
+        } else {
+            pgMarkup += "<li class='waves-effect'><a onclick='PlotAll(json," + (i + 1) + ")'>" + (i + 1) + "</a></li>";
+        }
     };
 
-    pages.innerHTML = "<ul class='pagination' style='text-align:center'>"+pgMarkup+"</ul>"
+    if (page == 1) {
+        pages.innerHTML = "<ul class='pagination' style='text-align:center'><li class='disabled'><a><i class='material-icons'>chevron_left</i></a></li>" + pgMarkup + "<li class='waves-effect'><a onclick='PlotAll(json," + (p + 2) + ")'><i class='material-icons'>chevron_right</i></a></li></ul>"
+    } else {
+        pages.innerHTML = "<ul class='pagination' style='text-align:center'><li class='waves-effect'><a onclick='PlotAll(json," + (p) + ")'><i class='material-icons'>chevron_left</i></a></li>" + pgMarkup + "<li class='waves-effect'><a onclick='PlotAll(json," + (p + 2) + ")'><i class='material-icons'>chevron_right</i></a></li></ul>"
+    }
+
 
 };
