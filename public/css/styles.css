@@ -1,0 +1,35 @@
+.hero {
+    height: 270px;
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(0, 33, 71, 1) 0%, rgba(47, 183, 186, 1) 90%);
+}
+
+.rail {
+    position: fixed;
+    float: left;
+    width: 280px;
+    height: calc(100vh - 64px);
+
+}
+
+.view {
+    position: absolute;
+    right: 0;
+    width: calc(100vw - 290px);
+    float: right;
+}
+
+.fix-.main-view {
+    position: absolute;
+}
+
+header.logo {
+    padding: 50px 80px;
+    text-align: center;
+}
+thead{
+    background-color: #455a64;
+    color: #fff;
+}
+th{
+    border-radius: unset !important;
+}
