@@ -13,21 +13,22 @@ var PlotChart = (data, page) => {
     var closeArray = [];
     var highArray = [];
     var lowArray = [];
+    var pHistory = data.priceHistory;
 
-    for (var i = 0; i < 10; i++) {
-        dateArray[i] = data.priceHistory[i + (p * 10)][0]
+    for (var i = 0; i < 10 && (i + (p * 10)) < pHistory.length; i++) {
+        dateArray[i] = pHistory[i + (p * 10)][0]
     }
-    for (var i = 0; i < 10; i++) {
-        openArray[i] = data.priceHistory[i + (p * 10)][1]
+    for (var i = 0; i < 10 && (i + (p * 10)) < pHistory.length; i++) {
+        openArray[i] = pHistory[i + (p * 10)][1]
     }
-    for (var i = 0; i < 10; i++) {
-        highArray[i] = data.priceHistory[i + (p * 10)][2]
+    for (var i = 0; i < 10 && (i + (p * 10)) < pHistory.length; i++) {
+        highArray[i] = pHistory[i + (p * 10)][2]
     }
-    for (var i = 0; i < 10; i++) {
-        lowArray[i] = data.priceHistory[i + (p * 10)][3]
+    for (var i = 0; i < 10 && (i + (p * 10)) < pHistory.length; i++) {
+        lowArray[i] = pHistory[i + (p * 10)][3]
     }
-    for (var i = 0; i < 10; i++) {
-        closeArray[i] = data.priceHistory[i + (p * 10)][4]
+    for (var i = 0; i < 10 && (i + (p * 10)) < pHistory.length; i++) {
+        closeArray[i] = pHistory[i + (p * 10)][4]
     }
 
 
@@ -115,11 +116,10 @@ function plotTable(data, page) {
         tableHeadData += "<th>" + tHeads[i] + "</th>";
     }
 
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 10 && (i + (p * 10)) < tBody.length; i++) {
         for (var j = 0; j < 6; j++) {
             tRow += "<td>" + tBody[i + (p * 10)][j] + "</td>";
         }
-        console.log(tRow);
         tableBodyData += "<tr>" + tRow + "</tr>";
         tRow = "";
     }
@@ -129,9 +129,9 @@ function plotTable(data, page) {
 
     const pages = document.getElementById('pages');
     var pgMarkup = "";
-    var nop = Math.ceil(tBody.length);
-    for (var i = 0 + p; i < p + 7 && i < nop; i++) {
-        if (i == 0 + p) {
+    var nop = Math.ceil(tBody.length/10.0);
+    for (var i = (0 + p); i < p + 7 && i < nop; i++) {
+        if (i == (0 + p)) {
             pgMarkup += "<li class='active'><a onclick='PlotAll(json," + (i + 1) + ")'>" + (i + 1) + "</a></li>";
         } else {
             pgMarkup += "<li class='waves-effect'><a onclick='PlotAll(json," + (i + 1) + ")'>" + (i + 1) + "</a></li>";
@@ -140,8 +140,11 @@ function plotTable(data, page) {
 
     if (page == 1) {
         pages.innerHTML = "<ul class='pagination' style='text-align:center'><li class='disabled'><a><i class='material-icons'>chevron_left</i></a></li>" + pgMarkup + "<li class='waves-effect'><a onclick='PlotAll(json," + (p + 2) + ")'><i class='material-icons'>chevron_right</i></a></li></ul>"
-    } else {
+    } else if(page == nop-1){
+        pages.innerHTML = "<ul class='pagination' style='text-align:center'><li class='waves-effect'><a onclick='PlotAll(json," + (p) + ")'><i class='material-icons'>chevron_left</i></a></li>" + pgMarkup + "<li class='waves-effect'><a class='disabled'><i class='material-icons'>chevron_right</i></a></li></ul>"
+    } else{
         pages.innerHTML = "<ul class='pagination' style='text-align:center'><li class='waves-effect'><a onclick='PlotAll(json," + (p) + ")'><i class='material-icons'>chevron_left</i></a></li>" + pgMarkup + "<li class='waves-effect'><a onclick='PlotAll(json," + (p + 2) + ")'><i class='material-icons'>chevron_right</i></a></li></ul>"
+
     }
 
 
