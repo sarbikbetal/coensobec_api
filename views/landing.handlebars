@@ -10,7 +10,7 @@
                 <div class="card-content">
                     <div class="container">
                         <div class="row">
-                            <form action="/" method="get" id="query" name="query">
+                            <form action="/stock" method="post" id="query" name="query">
                                 <div class="row">
                                     <div class="col s12 m6">
                                         <input type="text" class="datepicker" placeholder="Start Date">
@@ -19,14 +19,8 @@
                                         <input type="text" id="date2" class="datepicker" placeholder="End Date">
                                     </div>
                                     <div class="input-field col s12 m6">
-                                        <select>
-                                            <option value="" disabled selected>Choose Ticker</option>
-                                            <option value="BHEL">BHEL</option>
-                                            <option value="BEL">BEL</option>
-                                            <option value="BBL">BBL</option>
-                                            <option value="ALICON">ALICON</option>
-                                        </select>
-                                        <label>Ticker</label>
+                                        <input id="ticker" type="text" class="validate" name="ticker">
+                                        <label for="ticker">Ticker</label>
                                     </div>
                                 </div>
                                 <button class="btn waves-effect waves-light" type="submit" name="action" style="float:right">Submit

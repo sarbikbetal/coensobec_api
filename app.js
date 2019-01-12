@@ -2,7 +2,7 @@ const express = require('express');
 const exphbs  = require('express-handlebars');
 const bodyParser = require('body-parser');
 const path = require('path');
-
+const ismorphic_fetch = require('isomorphic-fetch');
 
 
 const app = express();
@@ -24,14 +24,18 @@ app.use(express.static(path.join(__dirname, "public")));
 app.get('/', (req, res)=>{
     res.render('landing');
 });
-app.get('/stock', (req, res)=>{
-    res.render('stock');
+app.post('/stock', (req, res)=>{
+    let tick=req.body.ticker;
+    fetch(`https://stockapp-dwai.herokuapp.com/stock?ticker=${tick}`,{
+        method: "GET"
+    }).then(res=> res.json()).then(data=>{ 
+        console.log(data);
+        res.render('stock',{
+            eJson : encodeURIComponent(JSON.stringify(data))
+        });
+    }).catch(error=>{console.log(error)});
+
 });
-
-
-
-
-
 
 //Server Init
 const port = process.env.PORT || 5732;

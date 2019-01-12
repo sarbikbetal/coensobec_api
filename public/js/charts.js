@@ -129,7 +129,7 @@ function plotTable(data, page) {
 
     const pages = document.getElementById('pages');
     var pgMarkup = "";
-    var nop = Math.ceil(tBody.length/10.0);
+    var nop = Math.ceil(tBody.length / 10.0);
     for (var i = (0 + p); i < p + 7 && i < nop; i++) {
         if (i == (0 + p)) {
             pgMarkup += "<li class='active'><a onclick='PlotAll(json," + (i + 1) + ")'>" + (i + 1) + "</a></li>";
@@ -139,11 +139,11 @@ function plotTable(data, page) {
     };
 
     if (page == 1) {
-        pages.innerHTML = "<ul class='pagination' style='text-align:center'><li class='disabled'><a><i class='material-icons'>chevron_left</i></a></li>" + pgMarkup + "<li class='waves-effect'><a onclick='PlotAll(json," + (p + 2) + ")'><i class='material-icons'>chevron_right</i></a></li></ul>"
-    } else if(page == nop-1){
-        pages.innerHTML = "<ul class='pagination' style='text-align:center'><li class='waves-effect'><a onclick='PlotAll(json," + (p) + ")'><i class='material-icons'>chevron_left</i></a></li>" + pgMarkup + "<li class='waves-effect'><a class='disabled'><i class='material-icons'>chevron_right</i></a></li></ul>"
-    } else{
-        pages.innerHTML = "<ul class='pagination' style='text-align:center'><li class='waves-effect'><a onclick='PlotAll(json," + (p) + ")'><i class='material-icons'>chevron_left</i></a></li>" + pgMarkup + "<li class='waves-effect'><a onclick='PlotAll(json," + (p + 2) + ")'><i class='material-icons'>chevron_right</i></a></li></ul>"
+        pages.innerHTML = "<ul class='pagination' style='text-align:center'><li class='disabled'><a><i class='material-icons'>chevron_left</i></a></li>" + pgMarkup + "<li class='waves-effect'><a onclick='PlotAll(json," + (p + 2) + ")'><i class='material-icons'>chevron_right</i></a></li><li class='waves-effect'><a onclick='PlotAll(json,"+nop+")'><i class='material-icons'>fast_forward</i></a></li></ul>"
+    } else if (page == nop) {
+        pages.innerHTML = "<ul class='pagination' style='text-align:center'><li class='waves-effect'><a onclick='PlotAll(json,1)'><i class='material-icons'>fast_rewind</i></a></li><li class='waves-effect'><a onclick='PlotAll(json," + (p) + ")'><i class='material-icons'>chevron_left</i></a></li>" + pgMarkup + "<li class='waves-effect'><a class='disabled'><i class='material-icons'>chevron_right</i></a></li></ul>"
+    } else {
+        pages.innerHTML = "<ul class='pagination' style='text-align:center'><li class='waves-effect'><a onclick='PlotAll(json,1)'><i class='material-icons'>fast_rewind</i></a></li><li class='waves-effect'><a onclick='PlotAll(json," + (p) + ")'><i class='material-icons'>chevron_left</i></a></li>" + pgMarkup + "<li class='waves-effect'><a onclick='PlotAll(json," + (p + 2) + ")'><i class='material-icons'>chevron_right</i></a></li><li class='waves-effect'><a onclick='PlotAll(json,"+nop+")'><i class='material-icons'>fast_forward</i></a></li></ul>"
 
     }
 
