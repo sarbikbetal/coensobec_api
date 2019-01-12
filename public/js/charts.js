@@ -81,6 +81,70 @@ var PlotChart = (data, page) => {
                     display: true,
                     scaleLabel: {
                         display: true,
+                        labelString: 'Date'
+                    }
+                }],
+                yAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: ''
+                    }
+                }]
+            }
+        }
+    };
+
+    var fdateArray=[];
+    var fopenArray=[];
+    var fcloseArray=[];
+
+    for (var i = 0; i < pHistory.length; i++) {
+        fdateArray[i] = pHistory[i][0]
+    }
+    for (var i = 0; i < pHistory.length; i++) {
+        fopenArray[i] = pHistory[i][1]
+    }
+    for (var i = 0; i < pHistory.length; i++) {
+        fcloseArray[i] = pHistory[i][4]
+    }
+
+    var fconfig = {
+        type: 'line',
+        data: {
+            labels: fdateArray,
+            datasets: [{
+                label: 'Open',
+                fill: false,
+                borderWidth: 3,
+                pointRadius: 0,
+                borderColor: 'rgba(79, 195, 0, 1)',
+                data: fopenArray,
+                lineTension: 0,
+            }, {
+                label: 'Close',
+                fill: false,
+                borderWidth: 3,
+                borderColor: 'rgba(0, 195, 247, 1)',
+                data: fcloseArray,
+                lineTension: 0,
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+            tooltips: {
+                mode: 'index',
+                intersect: false,
+            },
+            hover: {
+                mode: 'nearest',
+                intersect: true
+            },
+            scales: {
+                xAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
                         labelString: ''
                     }
                 }],
@@ -88,7 +152,7 @@ var PlotChart = (data, page) => {
                     display: true,
                     scaleLabel: {
                         display: true,
-                        labelString: 'Temperature'
+                        labelString: ''
                     }
                 }]
             }
@@ -96,7 +160,9 @@ var PlotChart = (data, page) => {
     };
 
     var ctx = document.getElementById('myChart');
+    var fct = document.getElementById('fullChart');
     window.myLine = new Chart(ctx, config);
+    window.myLine2 = new Chart(fct, fconfig);
 };
 
 //table plot function
@@ -139,11 +205,11 @@ function plotTable(data, page) {
     };
 
     if (page == 1) {
-        pages.innerHTML = "<ul class='pagination' style='text-align:center'><li class='disabled'><a><i class='material-icons'>chevron_left</i></a></li>" + pgMarkup + "<li class='waves-effect'><a onclick='PlotAll(json," + (p + 2) + ")'><i class='material-icons'>chevron_right</i></a></li><li class='waves-effect'><a onclick='PlotAll(json,"+nop+")'><i class='material-icons'>fast_forward</i></a></li></ul>"
+        pages.innerHTML = "<ul class='pagination' style='text-align:center'><li class='disabled'><a><i class='material-icons'>chevron_left</i></a></li>" + pgMarkup + "<li class='waves-effect'><a onclick='PlotAll(json," + (p + 2) + ")'><i class='material-icons'>chevron_right</i></a></li><li class='waves-effect'><a onclick='PlotAll(json," + nop + ")'><i class='material-icons'>fast_forward</i></a></li></ul>"
     } else if (page == nop) {
         pages.innerHTML = "<ul class='pagination' style='text-align:center'><li class='waves-effect'><a onclick='PlotAll(json,1)'><i class='material-icons'>fast_rewind</i></a></li><li class='waves-effect'><a onclick='PlotAll(json," + (p) + ")'><i class='material-icons'>chevron_left</i></a></li>" + pgMarkup + "<li class='waves-effect'><a class='disabled'><i class='material-icons'>chevron_right</i></a></li></ul>"
     } else {
-        pages.innerHTML = "<ul class='pagination' style='text-align:center'><li class='waves-effect'><a onclick='PlotAll(json,1)'><i class='material-icons'>fast_rewind</i></a></li><li class='waves-effect'><a onclick='PlotAll(json," + (p) + ")'><i class='material-icons'>chevron_left</i></a></li>" + pgMarkup + "<li class='waves-effect'><a onclick='PlotAll(json," + (p + 2) + ")'><i class='material-icons'>chevron_right</i></a></li><li class='waves-effect'><a onclick='PlotAll(json,"+nop+")'><i class='material-icons'>fast_forward</i></a></li></ul>"
+        pages.innerHTML = "<ul class='pagination' style='text-align:center'><li class='waves-effect'><a onclick='PlotAll(json,1)'><i class='material-icons'>fast_rewind</i></a></li><li class='waves-effect'><a onclick='PlotAll(json," + (p) + ")'><i class='material-icons'>chevron_left</i></a></li>" + pgMarkup + "<li class='waves-effect'><a onclick='PlotAll(json," + (p + 2) + ")'><i class='material-icons'>chevron_right</i></a></li><li class='waves-effect'><a onclick='PlotAll(json," + nop + ")'><i class='material-icons'>fast_forward</i></a></li></ul>"
 
     }
 
