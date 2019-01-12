@@ -3,6 +3,76 @@ function PlotAll(json, page) {
     PlotChart(json, page);
 }
 
+function PlotMain(data) {
+    var ds = data.priceHistory;
+    var fdateArray = [];
+    var fopenArray = [];
+    var fcloseArray = [];
+
+    for (var i = 0; i < ds.length; i++) {
+        fdateArray[i] = ds[i][0]
+    }
+    for (var i = 0; i < ds.length; i++) {
+        fopenArray[i] = ds[i][1]
+    }
+    for (var i = 0; i < ds.length; i++) {
+        fcloseArray[i] = ds[i][4]
+    }
+
+    var fconfig = {
+        type: 'line',
+        data: {
+            labels: fdateArray,
+            datasets: [{
+                label: 'Open',
+                fill: false,
+                borderWidth: 1,
+                pointRadius: 0,
+                borderColor: 'rgba(79, 195, 0, 1)',
+                data: fopenArray,
+                lineTension: 0,
+            }, {
+                label: 'Close',
+                fill: false,
+                borderWidth: 1,
+                pointRadius: 0,
+                borderColor: 'rgba(198, 30, 60, 1)',
+                data: fcloseArray,
+                lineTension: 0,
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+            tooltips: {
+                mode: 'index',
+                intersect: false,
+            },
+            hover: {
+                mode: 'nearest',
+                intersect: true
+            },
+            scales: {
+                xAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: ''
+                    }
+                }],
+                yAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: ''
+                    }
+                }]
+            }
+        }
+    };
+    var fct = document.getElementById('fullChart');
+    window.myLine2 = new Chart(fct, fconfig);
+}
+
 var PlotChart = (data, page) => {
     var cc = document.getElementById('chart-container');
     cc.innerHTML = "<canvas id='myChart'></canvas>"
@@ -95,74 +165,8 @@ var PlotChart = (data, page) => {
         }
     };
 
-    var fdateArray=[];
-    var fopenArray=[];
-    var fcloseArray=[];
-
-    for (var i = 0; i < pHistory.length; i++) {
-        fdateArray[i] = pHistory[i][0]
-    }
-    for (var i = 0; i < pHistory.length; i++) {
-        fopenArray[i] = pHistory[i][1]
-    }
-    for (var i = 0; i < pHistory.length; i++) {
-        fcloseArray[i] = pHistory[i][4]
-    }
-
-    var fconfig = {
-        type: 'line',
-        data: {
-            labels: fdateArray,
-            datasets: [{
-                label: 'Open',
-                fill: false,
-                borderWidth: 3,
-                pointRadius: 0,
-                borderColor: 'rgba(79, 195, 0, 1)',
-                data: fopenArray,
-                lineTension: 0,
-            }, {
-                label: 'Close',
-                fill: false,
-                borderWidth: 3,
-                borderColor: 'rgba(0, 195, 247, 1)',
-                data: fcloseArray,
-                lineTension: 0,
-            }]
-        },
-        options: {
-            maintainAspectRatio: false,
-            tooltips: {
-                mode: 'index',
-                intersect: false,
-            },
-            hover: {
-                mode: 'nearest',
-                intersect: true
-            },
-            scales: {
-                xAxes: [{
-                    display: true,
-                    scaleLabel: {
-                        display: true,
-                        labelString: ''
-                    }
-                }],
-                yAxes: [{
-                    display: true,
-                    scaleLabel: {
-                        display: true,
-                        labelString: ''
-                    }
-                }]
-            }
-        }
-    };
-
     var ctx = document.getElementById('myChart');
-    var fct = document.getElementById('fullChart');
     window.myLine = new Chart(ctx, config);
-    window.myLine2 = new Chart(fct, fconfig);
 };
 
 //table plot function
