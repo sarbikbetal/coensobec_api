@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 document.addEventListener('DOMContentLoaded', function() {
+  var date = new Date;
   var elems = document.querySelectorAll('.datepicker');
-  var instances = M.Datepicker.init(elems, {format: "yyyy-mm-d", autoClose: true});
+  var instances = M.Datepicker.init(elems, {format: "yyyy-mm-d", autoClose: true, maxDate: date});
 });
