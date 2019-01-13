@@ -21,16 +21,19 @@
 .fix-.main-view {
     position: absolute;
 }
-.spacer{
+
+.spacer {
     display: block;
     height: calc(100vh - 490px)
 }
-.rail-foot{
+
+.rail-foot {
     padding: 0 20px;
     color: #455a64;
     text-align: center;
 }
-.NavBar{
+
+.NavBar {
     background-color: #1eb980;
 }
 
@@ -48,15 +51,22 @@ th {
     border-radius: unset !important;
 }
 
-a.rail-link{
+a.rail-link {
     display: block;
     font-size: 24px;
     color: #000000d3;
     padding: 5px 50px;
     text-align: center;
 }
-.rail-col{
+
+.rail-col {
     color: #1eb980;
+}
+
+.charter {
+    position: relative;
+    height: 40vh;
+    width: calc(100vw - 340px);
 }
 
 @media screen and (max-width: 720px) {
@@ -69,5 +79,8 @@ a.rail-link{
         right: 0;
         width: 100vw;
         float: right;
+    }
+    .charter {
+        width: 95vw;
     }
 }
