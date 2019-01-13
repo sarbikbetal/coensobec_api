@@ -52,7 +52,7 @@ header.logo {
     text-align: center;
 }
 
-thead {
+#table>thead {
     background-color: #455a64;
     color: #fff;
 }
