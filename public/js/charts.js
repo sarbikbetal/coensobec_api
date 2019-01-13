@@ -13,10 +13,10 @@ function PlotMain(data) {
         fdateArray[i] = ds[i][0]
     }
     for (var i = 0; i < ds.length; i++) {
-        fhighArray[i] = ds[i][2]
+        fopenArray[i] = ds[i][1]
     }
     for (var i = 0; i < ds.length; i++) {
-        flowArray[i] = ds[i][3]
+        fcloseArray[i] = ds[i][4]
     }
 
     var fconfig = {
@@ -24,20 +24,20 @@ function PlotMain(data) {
         data: {
             labels: fdateArray,
             datasets: [{
-                label: 'High',
+                label: 'Open',
                 fill: false,
                 borderWidth: 1,
                 pointRadius: 0,
                 borderColor: 'rgba(79, 195, 0, 1)',
-                data: fhighArray,
+                data: fopenArray,
                 lineTension: 0,
             }, {
-                label: 'Low',
+                label: 'Close',
                 fill: false,
                 borderWidth: 1,
                 pointRadius: 0,
                 borderColor: 'rgba(198, 30, 60, 1)',
-                data: flowArray,
+                data: fcloseArray,
                 lineTension: 0,
             }]
         },
