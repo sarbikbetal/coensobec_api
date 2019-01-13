@@ -38,7 +38,6 @@ app.post('/stock', (req, res) => {
     fetch(`https://stockapp-dwai.herokuapp.com/stock?ticker=${tick}&start=${start}&end=${end}`, {
         method: "GET"
     }).then(res => res.json()).then(data => {
-        console.log(data);
         res.render('stock', {
             eJson: encodeURIComponent(JSON.stringify(data))
         });
