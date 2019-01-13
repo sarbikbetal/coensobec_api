@@ -21,6 +21,12 @@
     width: calc(100vw - 290px);
     float: right;
 }
+.ghl{
+    padding: 0 5px;
+}
+.ghi{
+    padding-top: 7px;
+}
 
 .fix-.main-view {
     position: absolute;
