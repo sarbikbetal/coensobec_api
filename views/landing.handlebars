@@ -7,20 +7,24 @@
                     <img src="img/header.png">
                 </div>
                 <div class="card-content">
-                <span class="card-title rail-col">Get Stock insights</span>
+                    <span class="card-title rail-col">Get Stock insights</span>
                     <div class="container">
                         <div class="row">
                             <form action="/stock" method="post" id="query" name="query">
                                 <div class="row">
                                     <div class="col s12 m6">
-                                        <input type="text" class="datepicker" placeholder="Start Date">
+                                        <input type="text" class="datepicker" placeholder="Start Date" name="start">
                                     </div>
                                     <div class="col s12 m6">
-                                        <input type="text" id="date2" class="datepicker" placeholder="End Date">
+                                        <input type="text" id="date2" class="datepicker" placeholder="End Date" name="end">
                                     </div>
                                     <div class="input-field col s12 m6">
-                                        <input id="ticker" type="text" class="validate" name="ticker">
-                                        <label for="ticker">Ticker</label>
+                                        <select name="ticker">
+                                            <option value="" disabled selected>Choose your option</option>
+                                            <option value="BHEL">BHEL</option>
+                                            <option value="BBL">BBL</option>
+                                        </select>
+                                        <label>Materialize Select</label>
                                     </div>
                                 </div>
                                 <button class="btn waves-effect waves-light" type="submit" name="action" style="float:right">Submit
