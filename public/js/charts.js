@@ -71,6 +71,8 @@ function PlotMain(data) {
     };
     var fct = document.getElementById('fullChart');
     window.myLine2 = new Chart(fct, fconfig);
+
+    document.getElementById('cname').innerHTML = data.ticker;
 }
 
 var PlotChart = (data, page) => {
