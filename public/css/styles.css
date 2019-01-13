@@ -81,6 +81,6 @@ a.rail-link {
         float: right;
     }
     .charter {
-        width: 95vw;
+        width: calc(100vw - 70px);
     }
 }
