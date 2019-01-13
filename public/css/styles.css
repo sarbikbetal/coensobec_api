@@ -1,8 +1,12 @@
 .hero {
-    height: 210px;
-    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(0, 33, 71, 1) 0%, rgba(47, 183, 186, 1) 90%);
+    height: 30vh;
+    background-image: url('/img/stock.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 40px;
+    margin-top: 10px;
 }
-
 .rail {
     position: fixed;
     float: left;
@@ -80,6 +84,7 @@ a.rail-link {
         width: 100vw;
         float: right;
     }
+
     .charter {
         width: calc(100vw - 70px);
     }
