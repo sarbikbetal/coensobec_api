@@ -24,6 +24,11 @@ app.use(express.static(path.join(__dirname, "public")));
 app.get('/', (req, res)=>{
     res.render('landing');
 });
+//Index route
+app.get('/about', (req, res)=>{
+    res.render('about');
+});
+//Stock Route
 app.post('/stock', (req, res)=>{
     let tick=req.body.ticker;
     fetch(`https://stockapp-dwai.herokuapp.com/stock?ticker=${tick}`,{

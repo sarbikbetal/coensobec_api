@@ -1,5 +1,5 @@
 .hero {
-    height: 270px;
+    height: 210px;
     background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(0, 33, 71, 1) 0%, rgba(47, 183, 186, 1) 90%);
 }
 
@@ -21,9 +21,21 @@
 .fix-.main-view {
     position: absolute;
 }
+.spacer{
+    display: block;
+    height: calc(100vh - 490px)
+}
+.rail-foot{
+    padding: 0 20px;
+    color: #455a64;
+    text-align: center;
+}
+.NavBar{
+    background-color: #1eb980;
+}
 
 header.logo {
-    padding: 50px 80px;
+    padding: 50px 80px 10px 80px;
     text-align: center;
 }
 
@@ -34,6 +46,17 @@ thead {
 
 th {
     border-radius: unset !important;
+}
+
+a.rail-link{
+    display: block;
+    font-size: 24px;
+    color: #000000d3;
+    padding: 5px 50px;
+    text-align: center;
+}
+.rail-col{
+    color: #1eb980;
 }
 
 @media screen and (max-width: 720px) {
