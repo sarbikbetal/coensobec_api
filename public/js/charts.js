@@ -110,30 +110,26 @@ var PlotChart = (data, page) => {
             labels: dateArray,
             datasets: [{
                 label: 'High',
-                borderWidth: 2,
                 borderColor: 'rgba(79, 195, 0, 1)',
                 data: highArray,
                 fill: false,
                 lineTension: 0,
             }, {
                 label: 'Low',
-                borderWidth: 2,
                 fill: false,
                 borderColor: 'rgba(220, 79, 0, 1)',
                 data: lowArray,
                 lineTension: 0,
             }, {
                 label: 'Open',
-                borderWidth: 2,
                 fill: false,
-                borderColor: 'rgba(177, 82, 172, 1)',
+                borderColor: '#4bb9e8',
                 data: openArray,
                 lineTension: 0,
             }, {
                 label: 'Close',
-                borderWidth: 2,
                 fill: false,
-                borderColor: 'rgba(198, 195, 0, 1)',
+                borderColor: '#f9d50e',
                 data: closeArray,
                 lineTension: 0,
             }]
